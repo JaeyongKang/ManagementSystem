@@ -1,8 +1,12 @@
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import Assignment.Assignment;
+import Assignment.Mechanics;
 
 public class AssignmentManager {
 	
-	Assignment assignment;
+	ArrayList<Assignment> assignments = new ArrayList<Assignment>();
 	
 	Scanner input;
 	
@@ -10,11 +14,11 @@ public class AssignmentManager {
 		this.input = input; //이 input을 모든 method에서 사용 가능할 수 있게 해줌.
 	}
 
-	public void viewAssignment() {
-		System.out.print("Assignment name:");
-		String assignmentName = input.next(); //String 비교형은 ==이 아닌 .equals(str)을 써야 한다.
-		if(assignment.name.equals(assignmentName)) {
-			assignment.printInfo();
+	public void viewAssignments() {
+//		System.out.print("Assignment name:");
+//		String assignmentName = input.next(); //String 비교형은 ==이 아닌 .equals(str)을 써야 한다.
+		for(int i = 0; i<assignments.size(); i++) {
+			assignments.get(i).printInfo();
 		}
 		
 	}
@@ -22,33 +26,93 @@ public class AssignmentManager {
 	public void deleteAssignment() {
 		System.out.print("Assignment name:");
 		String assignmentName = input.next();
-		if(assignment == null) {
+		int index = -1;
+		for(int i = 0; i<assignments.size(); i++) {
+			if(assignments.get(i).getName().equals(assignmentName)) {
+				index = i;
+				break;
+			}
+		}
+		
+		if (index >= 0) {
+			assignments.remove(index);
+			System.out.println("The assignment " + assignmentName + " is deleted.");
+		}
+		
+		else {
 			System.out.println("The assignment has not been registered.");
 			return;
 		}
-		if(assignment.name.equals(assignmentName)) {
-			assignment = null;
-			System.out.println("The assignment is deleted.");
-		}
+
 		
 	}
 
 	public void editAssignment() {
 		System.out.print("Assignment name:");
 		String assignmentName = input.next();
-		if(assignment.name.equals(assignmentName)) {
-			System.out.println("The assignment to be edited is " + assignmentName);
+		for(int i = 0; i<assignments.size(); i++) {
+			Assignment assignment = assignments.get(i);
+			if(assignment.getName().equals(assignmentName)) {
+				int num = -1;
+				while(num != 4) {
+					System.out.println("** Assignment Info Edit Menu **");
+					System.out.println("1. Edit Name");
+					System.out.println("2. Edit Date");
+					System.out.println("3. Edit Content");
+					System.out.println("4. Exit");
+					System.out.println("Select one number between 1-4 :");
+					
+					num = input.nextInt();
+					if (num==1) {
+						System.out.print("Assignment Name : ");
+						String name = input.next();
+						assignment.setName(name);
+					}
+					else if(num == 2) {
+						System.out.print("Date of submission(Enter only the numbers):");
+						int date = input.nextInt();
+						assignment.setDate(date);
+					}
+					else if(num == 3) {
+						System.out.print("Content:");
+						String content = input.next();
+						assignment.setContent(content);
+					}
+					else {
+						continue;
+					}
+
+				}
+				break; //if문
+			}
 		}
 	}
 
 	public void addAssignment() {
-		assignment = new Assignment();
-		System.out.print("Assignment name:");
-		assignment.name = input.next();
-		System.out.print("Date of submission(Enter only the numbers):");
-		assignment.date = input.nextInt();
-		System.out.print("Content:");
-		assignment.content = input.next();
+		int kind = 0;
+		Assignment assignment;
+		while (kind != 1 && kind != 2 ) {
+			System.out.println("1 for Programming");
+			System.out.println("2 for Mechanics");
+			System.out.println("Select num for Assignment Kind between 1 and 2 : ");
+			kind = input.nextInt();
+			if (kind == 1) {
+				assignment = new Assignment();
+				assignment.getUserInput(input);
+				assignments.add(assignment);
+				break;
+			}
+			else if(kind ==2) {
+				assignment = new Mechanics();
+				assignment.getUserInput(input);
+				assignments.add(assignment);
+				break;
+			}
+			else {
+				System.out.println("Select num for Assignment Kind between 1 and 2 : ");
+			}
+		}
+		
 		}
 
 }

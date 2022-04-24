@@ -14,7 +14,7 @@ public class MenuManager {
 			System.out.println("1. Add Assignment");
 			System.out.println("2. Edit Assignment");
 			System.out.println("3. Delete Assignment");
-			System.out.println("4. View Assignment");
+			System.out.println("4. View Assignments");
 			System.out.println("5. Exit");
 			System.out.println("Select one number between 1-5 :");
 
@@ -30,7 +30,7 @@ public class MenuManager {
 				assignmentManager.deleteAssignment();
 			}
 			else if (num==4) {
-				assignmentManager.viewAssignment();
+				assignmentManager.viewAssignments();
 			}
 			else {
 				continue;
