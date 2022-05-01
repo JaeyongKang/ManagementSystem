@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Assignment.Assignment;
+import Assignment.AssignmentKind;
 import Assignment.Mechanics;
+import Assignment.Programming;
 
 public class AssignmentManager {
 	
@@ -91,25 +93,31 @@ public class AssignmentManager {
 	public void addAssignment() {
 		int kind = 0;
 		Assignment assignment;
-		while (kind != 1 && kind != 2 ) {
+		while (kind != 1 && kind != 2 && kind != 3) {
 			System.out.println("1 for Programming");
 			System.out.println("2 for Mechanics");
-			System.out.println("Select num for Assignment Kind between 1 and 2 : ");
+			System.out.println("3 for ETC.");
+			System.out.println("Select num 1,2 or 3 for Assignment Kind : ");
 			kind = input.nextInt();
-			if (kind == 1) {
-				assignment = new Assignment();
+			if (kind == 3) {
+				assignment = new Assignment(AssignmentKind.Etc);
 				assignment.getUserInput(input);
 				assignments.add(assignment);
 				break;
 			}
 			else if(kind ==2) {
-				assignment = new Mechanics();
+				assignment = new Mechanics(AssignmentKind.Mechanics);
 				assignment.getUserInput(input);
 				assignments.add(assignment);
 				break;
 			}
+			else if(kind == 1) {
+				assignment = new Programming(AssignmentKind.Programming);
+				assignment.getUserInput(input);
+				assignments.add(assignment);
+			}
 			else {
-				System.out.println("Select num for Assignment Kind between 1 and 2 : ");
+				System.out.println("Select num 1,2 or 3 for Assignment Kind : ");
 			}
 		}
 		

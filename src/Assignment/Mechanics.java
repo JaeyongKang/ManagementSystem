@@ -3,6 +3,12 @@ package Assignment;
 import java.util.Scanner;
 
 public class Mechanics extends Assignment {
+	
+	
+	public Mechanics(AssignmentKind kind) {
+		super(kind);
+	}
+
 	public void getUserInput(Scanner input) {
 		System.out.print("Assignment name:");
 		String name = input.next();
