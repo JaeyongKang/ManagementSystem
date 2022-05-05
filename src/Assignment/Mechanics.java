@@ -2,7 +2,7 @@ package Assignment;
 
 import java.util.Scanner;
 
-public class Mechanics extends Assignment {
+public class Mechanics extends Assignment implements AssignmentInput{
 	
 	
 	public Mechanics(AssignmentKind kind) {
@@ -36,5 +36,25 @@ public class Mechanics extends Assignment {
 		System.out.print("Content:");
 		String content = input.next();
 		this.setContent(content);
+	}
+	
+	public void printInfo() { //static에 미리 올려 둘 필요가 없기 때문에 제외
+		String akind = "none";
+		
+		switch(this.kind) {
+		case Mechanics :
+			akind = "Mechanics";
+			break;
+		case Programming :
+			akind = "Programming";
+			break;
+		case Etc :
+			akind = "ETC.";
+			break;
+		default :
+			
+		}
+		System.out.println("Kind : " + akind + "Assingment name : " + name + " Date of submission(Enter only the numbers) : " + date + " Content : " + content + " Source code Content : " + content);
+		
 	}
 }

@@ -2,9 +2,10 @@ package Assignment;
 
 import java.util.Scanner;
 
-public class Assignment {
+public abstract class Assignment { 
+	//abstract를 붙였다는 건 "더 이상 Assignment라는 객체를 생성하지 않는다"라는 것을 의미한다.
 
-	protected AssignmentKind kind = AssignmentKind.Programming;
+	protected AssignmentKind kind = AssignmentKind.Etc;
 	protected String name;
 	protected int date;
 	protected String content;
@@ -58,25 +59,9 @@ public class Assignment {
 	}
 	
 	
-	public void printInfo() { //static에 미리 올려 둘 필요가 없기 때문에 제외
-		String akind = "none";
-		
-		switch(this.kind) {
-		case Mechanics :
-			akind = "Mechanics";
-			break;
-		case Programming :
-			akind = "Programming";
-			break;
-		case Etc :
-			akind = "ETC.";
-			break;
-		default :
-			
-		}
-		System.out.println("Kind : " + akind + "Assingment name : " + name + " Date of submission(Enter only the numbers) : " + date + " Content : " + content);
-		
-	}
+	public abstract void printInfo(); //static에 미리 올려 둘 필요가 없기 때문에 제외
+	//Assignment를 상속받는 클래스에 printInfo함수를 모두 재정의 해주었기 때문에 abstract를 붙여줄 수 있다.
+
 	
 	public void getUserInput(Scanner input) {
 		System.out.print("Assignment name:");

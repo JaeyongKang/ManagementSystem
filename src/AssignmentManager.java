@@ -2,13 +2,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Assignment.Assignment;
+import Assignment.AssignmentInput;
 import Assignment.AssignmentKind;
+import Assignment.Etc;
 import Assignment.Mechanics;
 import Assignment.Programming;
 
 public class AssignmentManager {
 	
-	ArrayList<Assignment> assignments = new ArrayList<Assignment>();
+	ArrayList<AssignmentInput> assignments = new ArrayList<AssignmentInput>();
 	
 	Scanner input;
 	
@@ -53,8 +55,8 @@ public class AssignmentManager {
 		System.out.print("Assignment name:");
 		String assignmentName = input.next();
 		for(int i = 0; i<assignments.size(); i++) {
-			Assignment assignment = assignments.get(i);
-			if(assignment.getName().equals(assignmentName)) {
+			AssignmentInput assignmentInput = assignments.get(i);
+			if(assignmentInput.getName().equals(assignmentName)) {
 				int num = -1;
 				while(num != 4) {
 					System.out.println("** Assignment Info Edit Menu **");
@@ -68,17 +70,17 @@ public class AssignmentManager {
 					if (num==1) {
 						System.out.print("Assignment Name : ");
 						String name = input.next();
-						assignment.setName(name);
+						assignmentInput.setName(name);
 					}
 					else if(num == 2) {
 						System.out.print("Date of submission(Enter only the numbers):");
 						int date = input.nextInt();
-						assignment.setDate(date);
+						assignmentInput.setDate(date);
 					}
 					else if(num == 3) {
 						System.out.print("Content:");
 						String content = input.next();
-						assignment.setContent(content);
+						assignmentInput.setContent(content);
 					}
 					else {
 						continue;
@@ -92,7 +94,7 @@ public class AssignmentManager {
 
 	public void addAssignment() {
 		int kind = 0;
-		Assignment assignment;
+		AssignmentInput assignmentInput;
 		while (kind != 1 && kind != 2 && kind != 3) {
 			System.out.println("1 for Programming");
 			System.out.println("2 for Mechanics");
@@ -100,21 +102,21 @@ public class AssignmentManager {
 			System.out.println("Select num 1,2 or 3 for Assignment Kind : ");
 			kind = input.nextInt();
 			if (kind == 3) {
-				assignment = new Assignment(AssignmentKind.Etc);
-				assignment.getUserInput(input);
-				assignments.add(assignment);
+				assignmentInput = new Etc(AssignmentKind.Etc);
+				assignmentInput.getUserInput(input);
+				assignments.add(assignmentInput);
 				break;
 			}
 			else if(kind ==2) {
-				assignment = new Mechanics(AssignmentKind.Mechanics);
-				assignment.getUserInput(input);
-				assignments.add(assignment);
+				assignmentInput = new Mechanics(AssignmentKind.Mechanics);
+				assignmentInput.getUserInput(input);
+				assignments.add(assignmentInput);
 				break;
 			}
 			else if(kind == 1) {
-				assignment = new Programming(AssignmentKind.Programming);
-				assignment.getUserInput(input);
-				assignments.add(assignment);
+				assignmentInput = new Programming(AssignmentKind.Programming);
+				assignmentInput.getUserInput(input);
+				assignments.add(assignmentInput);
 			}
 			else {
 				System.out.println("Select num 1,2 or 3 for Assignment Kind : ");
