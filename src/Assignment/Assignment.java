@@ -2,7 +2,9 @@ package Assignment;
 
 import java.util.Scanner;
 
-public abstract class Assignment { 
+import exception.NameFormatException;
+
+public abstract class Assignment implements AssignmentInput { 
 	//abstract를 붙였다는 건 "더 이상 Assignment라는 객체를 생성하지 않는다"라는 것을 의미한다.
 
 	protected AssignmentKind kind = AssignmentKind.Etc;
@@ -22,7 +24,10 @@ public abstract class Assignment {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(String name) throws NameFormatException{
+		if(!name.contains("-") && !name.equals("")) {
+			throw new NameFormatException();
+		}
 		this.name = name;
 	}
 
@@ -64,9 +69,18 @@ public abstract class Assignment {
 
 	
 	public void getUserInput(Scanner input) {
-		System.out.print("Assignment name:");
-		String name = input.next();
-		this.setName(name);
+		String name1 = "";
+		while(!name1.contains("-")) {
+			System.out.print("Assignment name:");
+			String name = input.next();
+			try {
+				this.setName(name);
+				break;
+			} catch (NameFormatException e) {
+				System.out.println("Please input assignment name like Mechanics(2-1)");
+			}
+		}
+
 		
 		System.out.print("Date of submission(Enter only the numbers):");
 		int date = input.nextInt();
@@ -75,6 +89,50 @@ public abstract class Assignment {
 		System.out.print("Content:");
 		String content = input.next();
 		this.setContent(content);
+	}
+	
+	public void setAssignmentName(Scanner Input) {
+		String name1 = "";
+		while(!name1.contains("-")) {
+			System.out.print("Assignment Name : ");
+			String name = Input.next();
+			try {
+				this.setName(name);
+				break;
+			} catch (NameFormatException e) {
+				System.out.println("Please input assignment name like Mechanics(2-1)");
+			}
+		}
+	}
+	
+	public void setAssignmentDate(Scanner Input) {
+		System.out.print("Date of submission(Enter only the numbers):");
+		int date = Input.nextInt();
+		this.setDate(date);
+	}
+	
+	public void setAssignmentContent(Scanner Input) {
+		System.out.print("Content:");
+		String content = Input.next();
+		this.setContent(content);
+	}
+	
+	public String getKindString() {
+		String akind = "none";
+		
+		switch(this.kind) {
+		case Mechanics :
+			akind = "Mechanics";
+			break;
+		case Programming :
+			akind = "Programming";
+			break;
+		case Etc :
+			akind = "ETC.";
+			break;
+		default :
+		}
+		return akind;
 	}
 
 }
