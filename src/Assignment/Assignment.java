@@ -1,16 +1,23 @@
 package Assignment;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.NameFormatException;
 
-public abstract class Assignment implements AssignmentInput { 
+public abstract class Assignment implements AssignmentInput,Serializable { 
 	//abstract를 붙였다는 건 "더 이상 Assignment라는 객체를 생성하지 않는다"라는 것을 의미한다.
 
+	/**
+	 * 
+	 */
+	
+	private static final long serialVersionUID = -1860518495666890543L;
 	protected AssignmentKind kind = AssignmentKind.Etc;
 	protected String name;
 	protected int date;
 	protected String content;
+	
 	
 	public AssignmentKind getKind() {
 		return kind;

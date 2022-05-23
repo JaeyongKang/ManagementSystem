@@ -1,22 +1,33 @@
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import Assignment.Assignment;
 import Assignment.AssignmentInput;
 import Assignment.AssignmentKind;
 import Assignment.Etc;
 import Assignment.Mechanics;
 import Assignment.Programming;
 
-public class AssignmentManager {
+public class AssignmentManager implements Serializable{
 	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 947879933961405537L;
+
 	ArrayList<AssignmentInput> assignments = new ArrayList<AssignmentInput>();
 	
-	Scanner input;
+	transient Scanner input; //transient : 저장하고 싶지 않다
 	
 	public AssignmentManager(Scanner input) {
 		this.input = input; //이 input을 모든 method에서 사용 가능할 수 있게 해줌.
+	}
+	
+	public AssignmentManager() {
+		
 	}
 
 	public void viewAssignments() {

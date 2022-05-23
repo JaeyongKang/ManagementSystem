@@ -1,12 +1,22 @@
 package Assignment;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Mechanics extends Assignment {
+public class Mechanics extends Assignment implements Serializable{
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6536350397839448116L;
+
 	public Mechanics(AssignmentKind kind) {
 		super(kind);
+	}
+	
+	public Mechanics() {
+		
 	}
 
 	public void getUserInput(Scanner input) {
