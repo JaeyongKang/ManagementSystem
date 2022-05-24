@@ -1,8 +1,8 @@
 package log;
 
-public class LoogerTester {
+public class LoggerTester {
 	
-	public LoogerTester() {
+	public LoggerTester() {
 		
 	}
 
