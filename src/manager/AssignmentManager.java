@@ -1,3 +1,4 @@
+package manager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class AssignmentManager implements Serializable{
 		}
 		
 	}
+	
 
 	public void deleteAssignment() {
 		System.out.print("Assignment name:");
@@ -146,6 +148,10 @@ public class AssignmentManager implements Serializable{
 		System.out.println("3. Edit Content");
 		System.out.println("4. Exit");
 		System.out.println("Select one number between 1-4 :");
+	}
+
+	public int size() {
+		return assignments.size();
 	}
 
 }

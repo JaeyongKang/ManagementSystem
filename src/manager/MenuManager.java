@@ -1,3 +1,4 @@
+package manager;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -8,6 +9,7 @@ import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import gui.WindowFrame;
 import log.EventLogger;
 
 public class MenuManager implements Serializable{
@@ -25,6 +27,10 @@ public class MenuManager implements Serializable{
 			assignmentManager = new AssignmentManager(input);
 			//null값일 경우 생성자를 만들어서 값을 저장하도록 만듬
 		}
+		else {
+			assignmentManager.input = input;
+		}
+		WindowFrame frame = new WindowFrame(assignmentManager);
 		selectMenu(input, assignmentManager);
 		putObject(assignmentManager, "assignmentmanager.ser");
 	}
