@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import Assignment.Assignment;
 import Assignment.AssignmentInput;
 import Assignment.AssignmentKind;
 import Assignment.Etc;
@@ -36,6 +37,14 @@ public class AssignmentManager implements Serializable{
 			assignments.get(i).printInfo();
 		}
 		
+	}
+	
+	public int size() {
+		return assignments.size();
+	}
+	
+	public AssignmentInput get(int index) {
+		return (Assignment) assignments.get(index);
 	}
 	
 
@@ -148,10 +157,6 @@ public class AssignmentManager implements Serializable{
 		System.out.println("3. Edit Content");
 		System.out.println("4. Exit");
 		System.out.println("Select one number between 1-4 :");
-	}
-
-	public int size() {
-		return assignments.size();
 	}
 
 }

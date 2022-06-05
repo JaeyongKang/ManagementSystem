@@ -14,7 +14,11 @@ public interface AssignmentInput{
 	
 	public void setName(String name) throws NameFormatException;
 	
+	public int getDate();
+	
 	public void setDate(int date);
+	
+	public String getContent();
 	
 	public void setContent(String content);
 	
