@@ -2,6 +2,8 @@ package Assignment;
 
 import java.util.Scanner;
 
+import javax.swing.JTextField;
+
 import exception.NameFormatException;
 
 public interface AssignmentInput{

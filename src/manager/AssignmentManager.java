@@ -107,6 +107,16 @@ public class AssignmentManager implements Serializable{
 		}
 	}
 
+	public void addAssignment(String txtName, String txtDate, String Content) {
+		AssignmentInput assignmentInput = new Programming(AssignmentKind.Programming);
+		assignmentInput.getUserInput(input);
+		assignments.add(assignmentInput);
+	}
+	
+	public void addAssignment(AssignmentInput assignmentInput) {
+		assignments.add(assignmentInput);
+	}
+	
 	public void addAssignment() {
 		int kind = 0;
 		AssignmentInput assignmentInput;

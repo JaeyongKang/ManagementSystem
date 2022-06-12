@@ -16,11 +16,13 @@ public class AssignmentViewer extends JPanel{
 	WindowFrame frame;
 	AssignmentManager assignmentManager;
 	
-	public AssignmentViewer(WindowFrame frame,AssignmentManager assignmentManager) {
-		this.frame = frame;
-		this.assignmentManager = assignmentManager;
+	public AssignmentManager getAssignmentManager() {
+		return assignmentManager;
+	}
 
-		System.out.println("***" + assignmentManager.size() + "***");
+	public void setAssignmentManager(AssignmentManager assignmentManager) {
+		this.assignmentManager = assignmentManager;
+		this.removeAll();
 		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("Name");
@@ -40,6 +42,14 @@ public class AssignmentViewer extends JPanel{
 		JScrollPane sp = new JScrollPane(table);
 		
 		this.add(sp);
+	}
+
+	public AssignmentViewer(WindowFrame frame,AssignmentManager assignmentManager) {
+		this.frame = frame;
+		this.assignmentManager = assignmentManager;
+
+		System.out.println("***" + assignmentManager.size() + "***");
+
 
 	}
 }
